@@ -18,7 +18,9 @@ function isPrime(n) {
   if (n < 2) {
     return false;
   }
-  for (let i = 2; i < n; i += 1) /* O(n) */ {
+  // (let i = 2; i < n; i += 1); // O(n)
+  for (let i = 2; i <= Math.sqrt(n); i += 1) /* O(sqrt(n)) */ {
+    // reduce the time complexity to O(sqrt(n))
     if (n % i === 0) {
       return false;
     }
@@ -28,4 +30,4 @@ function isPrime(n) {
 
 module.exports = isPrime;
 
-// Big-O: O(n)
+// Big-O: O(sqrt(n))
