@@ -1,0 +1,67 @@
+const isPowerOfTwo = require('./isPowerOfTwo');
+
+describe('isPowerOfTwo', () => {
+  it('should return true if the number is power of two', () => {
+    expect(isPowerOfTwo(1)).toBe(true);
+    expect(isPowerOfTwo(2)).toBe(true);
+    expect(isPowerOfTwo(4)).toBe(true);
+    expect(isPowerOfTwo(8)).toBe(true);
+    expect(isPowerOfTwo(16)).toBe(true);
+    expect(isPowerOfTwo(32)).toBe(true);
+    expect(isPowerOfTwo(64)).toBe(true);
+    expect(isPowerOfTwo(128)).toBe(true);
+    expect(isPowerOfTwo(256)).toBe(true);
+    expect(isPowerOfTwo(512)).toBe(true);
+    expect(isPowerOfTwo(1024)).toBe(true);
+    expect(isPowerOfTwo(2048)).toBe(true);
+    expect(isPowerOfTwo(4096)).toBe(true);
+    expect(isPowerOfTwo(8192)).toBe(true);
+    expect(isPowerOfTwo(16384)).toBe(true);
+    expect(isPowerOfTwo(32768)).toBe(true);
+    expect(isPowerOfTwo(65536)).toBe(true);
+    expect(isPowerOfTwo(131072)).toBe(true);
+    expect(isPowerOfTwo(262144)).toBe(true);
+    expect(isPowerOfTwo(524288)).toBe(true);
+    expect(isPowerOfTwo(1048576)).toBe(true);
+    expect(isPowerOfTwo(2097152)).toBe(true);
+    expect(isPowerOfTwo(4194304)).toBe(true);
+    expect(isPowerOfTwo(8388608)).toBe(true);
+    expect(isPowerOfTwo(16777216)).toBe(true);
+    expect(isPowerOfTwo(33554432)).toBe(true);
+    expect(isPowerOfTwo(67108864)).toBe(true);
+    expect(isPowerOfTwo(134217728)).toBe(true);
+  });
+  it('should return false if the number is not power of two', () => {
+    expect(isPowerOfTwo(0)).toBe(false);
+    expect(isPowerOfTwo(3)).toBe(false);
+    expect(isPowerOfTwo(5)).toBe(false);
+    expect(isPowerOfTwo(7)).toBe(false);
+    expect(isPowerOfTwo(9)).toBe(false);
+    expect(isPowerOfTwo(11)).toBe(false);
+    expect(isPowerOfTwo(13)).toBe(false);
+    expect(isPowerOfTwo(17)).toBe(false);
+    expect(isPowerOfTwo(19)).toBe(false);
+    expect(isPowerOfTwo(23)).toBe(false);
+    expect(isPowerOfTwo(29)).toBe(false);
+    expect(isPowerOfTwo(31)).toBe(false);
+    expect(isPowerOfTwo(37)).toBe(false);
+    expect(isPowerOfTwo(41)).toBe(false);
+    expect(isPowerOfTwo(43)).toBe(false);
+    expect(isPowerOfTwo(47)).toBe(false);
+    expect(isPowerOfTwo(53)).toBe(false);
+    expect(isPowerOfTwo(59)).toBe(false);
+    expect(isPowerOfTwo(61)).toBe(false);
+    expect(isPowerOfTwo(67)).toBe(false);
+    expect(isPowerOfTwo(71)).toBe(false);
+    expect(isPowerOfTwo(73)).toBe(false);
+    expect(isPowerOfTwo(79)).toBe(false);
+    expect(isPowerOfTwo(83)).toBe(false);
+    expect(isPowerOfTwo(89)).toBe(false);
+    expect(isPowerOfTwo(97)).toBe(false);
+  });
+  it('should return false if the number is less than 1', () => {
+    expect(isPowerOfTwo(-1)).toBe(false);
+    expect(isPowerOfTwo(-16)).toBe(false);
+    expect(isPowerOfTwo(-1024)).toBe(false);
+  });
+});

@@ -1,0 +1,67 @@
+const isPowerOfTwoBitwise = require('./isPowerOfTwoBitwise');
+
+describe('isPowerOfTwoBitwise', () => {
+  it('should return true if the number is power of two', () => {
+    expect(isPowerOfTwoBitwise(1)).toBe(true);
+    expect(isPowerOfTwoBitwise(2)).toBe(true);
+    expect(isPowerOfTwoBitwise(4)).toBe(true);
+    expect(isPowerOfTwoBitwise(8)).toBe(true);
+    expect(isPowerOfTwoBitwise(16)).toBe(true);
+    expect(isPowerOfTwoBitwise(32)).toBe(true);
+    expect(isPowerOfTwoBitwise(64)).toBe(true);
+    expect(isPowerOfTwoBitwise(128)).toBe(true);
+    expect(isPowerOfTwoBitwise(256)).toBe(true);
+    expect(isPowerOfTwoBitwise(512)).toBe(true);
+    expect(isPowerOfTwoBitwise(1024)).toBe(true);
+    expect(isPowerOfTwoBitwise(2048)).toBe(true);
+    expect(isPowerOfTwoBitwise(4096)).toBe(true);
+    expect(isPowerOfTwoBitwise(8192)).toBe(true);
+    expect(isPowerOfTwoBitwise(16384)).toBe(true);
+    expect(isPowerOfTwoBitwise(32768)).toBe(true);
+    expect(isPowerOfTwoBitwise(65536)).toBe(true);
+    expect(isPowerOfTwoBitwise(131072)).toBe(true);
+    expect(isPowerOfTwoBitwise(262144)).toBe(true);
+    expect(isPowerOfTwoBitwise(524288)).toBe(true);
+    expect(isPowerOfTwoBitwise(1048576)).toBe(true);
+    expect(isPowerOfTwoBitwise(2097152)).toBe(true);
+    expect(isPowerOfTwoBitwise(4194304)).toBe(true);
+    expect(isPowerOfTwoBitwise(8388608)).toBe(true);
+    expect(isPowerOfTwoBitwise(16777216)).toBe(true);
+    expect(isPowerOfTwoBitwise(33554432)).toBe(true);
+    expect(isPowerOfTwoBitwise(67108864)).toBe(true);
+    expect(isPowerOfTwoBitwise(134217728)).toBe(true);
+  });
+  it('should return false if the number is not power of two', () => {
+    expect(isPowerOfTwoBitwise(0)).toBe(false);
+    expect(isPowerOfTwoBitwise(3)).toBe(false);
+    expect(isPowerOfTwoBitwise(5)).toBe(false);
+    expect(isPowerOfTwoBitwise(7)).toBe(false);
+    expect(isPowerOfTwoBitwise(9)).toBe(false);
+    expect(isPowerOfTwoBitwise(11)).toBe(false);
+    expect(isPowerOfTwoBitwise(13)).toBe(false);
+    expect(isPowerOfTwoBitwise(17)).toBe(false);
+    expect(isPowerOfTwoBitwise(19)).toBe(false);
+    expect(isPowerOfTwoBitwise(23)).toBe(false);
+    expect(isPowerOfTwoBitwise(29)).toBe(false);
+    expect(isPowerOfTwoBitwise(31)).toBe(false);
+    expect(isPowerOfTwoBitwise(37)).toBe(false);
+    expect(isPowerOfTwoBitwise(41)).toBe(false);
+    expect(isPowerOfTwoBitwise(43)).toBe(false);
+    expect(isPowerOfTwoBitwise(47)).toBe(false);
+    expect(isPowerOfTwoBitwise(53)).toBe(false);
+    expect(isPowerOfTwoBitwise(59)).toBe(false);
+    expect(isPowerOfTwoBitwise(61)).toBe(false);
+    expect(isPowerOfTwoBitwise(67)).toBe(false);
+    expect(isPowerOfTwoBitwise(71)).toBe(false);
+    expect(isPowerOfTwoBitwise(73)).toBe(false);
+    expect(isPowerOfTwoBitwise(79)).toBe(false);
+    expect(isPowerOfTwoBitwise(83)).toBe(false);
+    expect(isPowerOfTwoBitwise(89)).toBe(false);
+    expect(isPowerOfTwoBitwise(97)).toBe(false);
+  });
+  it('should return false if the number is less than 1', () => {
+    expect(isPowerOfTwoBitwise(-1)).toBe(false);
+    expect(isPowerOfTwoBitwise(-16)).toBe(false);
+    expect(isPowerOfTwoBitwise(-1024)).toBe(false);
+  });
+});
