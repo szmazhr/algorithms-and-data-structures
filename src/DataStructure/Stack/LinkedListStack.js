@@ -1,15 +1,15 @@
-const LinkedList = require('./LinkedList');
+const LinkedList = require('../LinkedList/LinkedList');
 
-class LinkedListQueue {
+class LinkedListStack {
   constructor() {
     this.list = new LinkedList();
   }
 
-  enqueue(value) {
-    this.list.append(value);
+  push(value) {
+    this.list.prepend(value);
   }
 
-  dequeue() {
+  pop() {
     return this.list.removeFromBeginning();
   }
 
@@ -30,4 +30,4 @@ class LinkedListQueue {
   }
 }
 
-module.exports = LinkedListQueue;
+module.exports = LinkedListStack;
