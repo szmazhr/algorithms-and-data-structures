@@ -48,6 +48,6 @@ describe('linkedListQueue', () => {
     linkedListQueue.enqueue(1);
     linkedListQueue.enqueue(2);
     linkedListQueue.enqueue(3);
-    expect(linkedListQueue.print()).toBe('1 -> 2 -> 3 -> ');
+    expect(linkedListQueue.toString()).toBe('1 -> 2 -> 3 -> null');
   });
 });

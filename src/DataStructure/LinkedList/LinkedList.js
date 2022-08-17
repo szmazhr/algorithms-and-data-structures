@@ -8,86 +8,153 @@ const Node = require('../Node/Node');
  *
  * ---- LinkedList Operations ----
  * LinkedList has the following operations:
- * - insert: Inserts a new node at the beginning of the list.
- * - print: Prints the list.
- * - getSize: Returns the number of nodes in the list.
- * - isEmpty: Checks if the list is empty.
- * - prepend: Inserts a new node at the beginning of the list.
- * - append: Inserts a new node at the end of the list.
- * - insert: Inserts a new node at a given index.
- * - removeFrom: Removes the node at a given index.
- * - remove: Removes the node with a given value.
- * - search: Searches for a node with a given value.
+ * append(value): Adds a new node containing value at the end of the list
+ * prepend(value): Adds a new node containing value in the beginning of the list
+ * size(): Returns the number of nodes in the list
+ * head(): Returns the first node in the list
+ * tail(): Returns the last node in the list
+ * at(index): Returns the node at the given index
+ * pop(): Removes the last node in the list
+ * contains(value): Returns true if the list contains a node with the given value
+ * find(value): Returns the first node containing the given value
+ * toString(): Returns a string representation of the list
+ * insertAt(index, value): Inserts a new node containing value at the given index
+ * removeAt(index): Removes the node at the given index
  */
 class LinkedList {
+  #head;
+
+  #tail;
+
+  #size;
+
   constructor() {
-    this.head = null;
-    this.size = 0;
-    this.tail = null;
+    this.#head = null;
+    this.#size = 0;
+    this.#tail = null;
   }
 
-  isEmpty() {
-    return this.size === 0;
-  }
+  append(value) {
+    // create a new node
+    const node = new Node(value);
 
-  getSize() {
-    return this.size;
-  }
+    if (this.isEmpty()) {
+      // if the list is empty, make the new node the head
+      this.#head = node;
+      this.#tail = node;
+    } else {
+      this.#tail.next = node;
+      this.#tail = node;
+    }
+    this.#size += 1;
+  } // O(1)
 
   prepend(value) {
     // create a new node
     const node = new Node(value);
 
     if (this.isEmpty()) {
-      this.tail = node;
+      this.#tail = node;
     } else {
-      node.next = this.head;
+      node.next = this.#head;
     }
 
     // update the head
-    this.head = node;
-    this.size += 1;
+    this.#head = node;
+    this.#size += 1;
   } // O(1)
 
-  append(value) {
-    // create a new node
-    const node = new Node(value);
+  size() {
+    return this.#size;
+  }
 
-    if (this.isEmpty()) {
-      // if the list is empty, make the new node the head
-      this.head = node;
-      this.tail = node;
-    } else {
-      this.tail.next = node;
-      this.tail = node;
+  head() {
+    return this.#head;
+  }
+
+  at(index) {
+    if (index < 0 || index >= this.#size) {
+      throw new Error('Index out of bounds');
     }
-    this.size += 1;
-  } // O(1)
 
-  /*
-  append(value) {
-    // create a new node
-    const node = new Node(value);
+    let current = this.#head;
+    let i = 0;
 
-    if (this.isEmpty()) {
-      // if the list is empty, make the new node the head
-      this.head = node;
-    } else {
-      let current = this.head;
-
-      // find the last node
-      while (current.next) {
-        current = current.next;
+    while (current) {
+      if (i === index) {
+        return current;
       }
 
-      // update the next property of the last node
-      current.next = node;
+      current = current.next;
+      i += 1;
     }
-    this.size += 1;
+    return 'Value not found';
   } // O(n)
-*/
-  insert(value, index) {
-    if (index < 0 || index > this.size) {
+
+  pop() {
+    if (this.isEmpty()) {
+      return 'List is empty';
+    }
+
+    let current = this.#head;
+    let previous = null;
+
+    while (current.next) {
+      previous = current;
+      current = current.next;
+    }
+
+    previous.next = null;
+    this.#size -= 1;
+    return current.value;
+  }
+
+  contains(value) {
+    if (!this.isEmpty()) {
+      return typeof this.find(value) === 'number';
+    }
+    return false;
+  } // O(n)
+
+  find(value) {
+    if (this.isEmpty()) {
+      return 'List is empty';
+    }
+
+    let current = this.#head;
+    let i = 0;
+
+    while (current) {
+      if (current.value === value) {
+        // return the index of the node if found
+        return i;
+      }
+
+      current = current.next;
+      i += 1;
+    }
+
+    return 'Value not found';
+  } // O(n)
+
+  toString() {
+    if (this.isEmpty()) {
+      return 'List is empty';
+    }
+
+    let current = this.#head;
+    let result = '';
+
+    while (current) {
+      result += `${current.value} -> `;
+      current = current.next;
+    }
+
+    return `${result}null`;
+  }
+
+  insertAt(value, index) {
+    if (index < 0 || index > this.#size) {
       throw new Error('Index out of bounds');
     }
 
@@ -96,7 +163,7 @@ class LinkedList {
       this.prepend(value);
     } else {
       const node = new Node(value);
-      let current = this.head;
+      let current = this.#head;
       let previous = null;
       let i = 0;
 
@@ -111,19 +178,19 @@ class LinkedList {
 
       // connect the new node to the next node
       node.next = current;
-      this.size += 1;
+      this.#size += 1;
     }
   } // O(n)
 
-  removeFrom(index) {
-    if (index < 0 || index >= this.size) {
+  removeAt(index) {
+    if (index < 0 || index >= this.#size) {
       throw new Error('Index out of bounds');
     }
 
     if (index === 0) {
-      this.head = this.head.next;
+      this.#head = this.#head.next;
     } else {
-      let current = this.head;
+      let current = this.#head;
       let previous = null;
       let i = 0;
 
@@ -137,76 +204,41 @@ class LinkedList {
       previous.next = current.next;
     }
 
-    this.size -= 1;
+    this.#size -= 1;
   } // O(n)
 
-  removeFromEnd() {
-    if (this.isEmpty()) {
-      return 'List is empty';
-    }
-
-    let current = this.head;
-    let previous = null;
-
-    while (current.next) {
-      previous = current;
-      current = current.next;
-    }
-
-    previous.next = null;
-    this.size -= 1;
-    return current.data;
+  isEmpty() {
+    return this.#size === 0;
   }
 
-  removeFromBeginning() {
+  unShift() {
     if (this.isEmpty()) {
       return 'List is empty';
     }
 
-    const value = this.head.data;
-    this.head = this.head.next;
-    this.size -= 1;
+    const { value } = this.#head;
+    this.#head = this.#head.next;
+    this.#size -= 1;
     return value;
   }
 
-  search(value) {
+  remove(value) {
     if (this.isEmpty()) {
       return 'List is empty';
     }
 
-    let current = this.head;
-    let i = 0;
-
-    while (current) {
-      if (current.data === value) {
-        // return the index of the node if found
-        return i;
-      }
-
-      current = current.next;
-      i += 1;
-    }
-
-    return 'Value not found';
-  } // O(n)
-
-  removeValue(value) {
-    if (this.isEmpty()) {
-      return 'List is empty';
-    }
-
-    let current = this.head;
+    let current = this.#head;
     let previous = null;
 
     while (current) {
-      if (current.data === value) {
+      if (current.value === value) {
         if (previous) {
           previous.next = current.next;
         } else {
-          this.head = current.next;
+          this.#head = current.next;
         }
 
-        this.size -= 1;
+        this.#size -= 1;
         return true;
       }
 
@@ -222,7 +254,7 @@ class LinkedList {
     }
 
     let previous = null;
-    let current = this.head;
+    let current = this.#head;
 
     /*
     this.head = 30 -> 20 -> 10 -> null
@@ -243,24 +275,8 @@ class LinkedList {
       current = next; // 20 -> null
     }
 
-    this.head = previous;
-    return this.head;
-  }
-
-  print() {
-    if (this.isEmpty()) {
-      return 'List is empty';
-    }
-
-    let current = this.head;
-    let result = '';
-
-    while (current) {
-      result += `${current.data} -> `;
-      current = current.next;
-    }
-
-    return result;
+    this.#head = previous;
+    return this.#head;
   }
 }
 

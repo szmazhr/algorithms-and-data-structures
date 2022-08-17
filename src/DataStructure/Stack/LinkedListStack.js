@@ -10,11 +10,11 @@ class LinkedListStack {
   }
 
   pop() {
-    return this.list.removeFromBeginning();
+    return this.list.unShift();
   }
 
   peek() {
-    return this.list.head.data;
+    return this.list.head().value;
   }
 
   isEmpty() {
@@ -22,11 +22,11 @@ class LinkedListStack {
   }
 
   getSize() {
-    return this.list.getSize();
+    return this.list.size();
   }
 
-  print() {
-    return this.list.print();
+  toString() {
+    return this.list.toString();
   }
 }
 

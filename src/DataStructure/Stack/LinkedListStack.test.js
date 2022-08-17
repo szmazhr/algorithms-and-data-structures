@@ -46,6 +46,6 @@ describe('linkedListStack', () => {
     linkedListStack.push(1);
     linkedListStack.push(2);
     linkedListStack.push(3);
-    expect(linkedListStack.print()).toBe('3 -> 2 -> 1 -> ');
+    expect(linkedListStack.toString()).toBe('3 -> 2 -> 1 -> null');
   });
 });
