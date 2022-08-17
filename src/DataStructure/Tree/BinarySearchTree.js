@@ -13,7 +13,6 @@ const Queue = require('../Queue/Queue');
  * Chat bots
  * Abstract syntax tree
  *
- * ---- Operations ----
  */
 
 class BinarySearchTree {
